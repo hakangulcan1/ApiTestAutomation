@@ -1,0 +1,13 @@
+[
+  {
+    "name": "Ignored tests",
+    "matchedStatuses": ["skipped"],
+    "flaky": true
+  },
+  {
+    "name": "Üretilen String değer uzunluğu 0dan farklı olmalı hatası",
+    "traceRegex": ".*Size.*0.*olamaz.*",
+    "matchedStatuses": ["failed"]
+  }
+]
+

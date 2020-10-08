@@ -1,0 +1,9 @@
+
+allure-report/
+
+allure-results/
+
+target/
+
+.DS_Store
+
