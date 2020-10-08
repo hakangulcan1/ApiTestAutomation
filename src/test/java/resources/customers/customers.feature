@@ -60,11 +60,24 @@ Feature: Customers Feature
   @customers
   Scenario: Customers Patch Req Test
     * configure headers = {Accept: application/json}
-    Given url customersPatchUrl
-    And request dummyReq
-    When method patch
+    Given url customersPostUrl2
+    And request { first_name : "hakanpatch", last_name : "gulcanpatch" }
+    When method post
+    Then status 201
+    Given url customersGetUrl3 + 'hakanpatch'
+    When method get
     Then status 200
-
+    * def formerLastName = response.last_name
+    Given url customersPatchUrl
+    And request { first_name : "hakanpatch", last_name : "new_gulcanpatch" }
+    When method patch
+    Then status 204
+    Given url customersGetUrl3 + 'hakanpatch'
+    When method get
+    Then status 200
+    * def currentLastName = response.last_name
+    Then match currentLastName == 'new_gulcanpatch'
+    Then match formerLastName != currentLastName
 
   @customers
   Scenario: Post Status Check - NoMatch
