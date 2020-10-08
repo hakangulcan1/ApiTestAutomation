@@ -78,6 +78,9 @@ Feature: Customers Feature
     * def currentLastName = response.last_name
     Then match currentLastName == 'new_gulcanpatch'
     Then match formerLastName != currentLastName
+    Given url customersDelUrl2 + 'hakanpatch'
+    When method delete
+    Then status 204
 
   @customers
   Scenario: Post Status Check - NoMatch
